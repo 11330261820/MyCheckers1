@@ -68,6 +68,8 @@ public class MyCheckersDraw extends View {
     }
 
     Paint p = new Paint();
+    Paint p1 = new Paint();
+    Paint p2 = new Paint();
 
     public void spawn(Canvas canvas, Square s) {
         canvas.drawBitmap(s.getB(), (s.getV() - 1) * getWidth() / 8, getHeight() / 2 - getWidth() / 2 + ((8 - s.getH()) * getWidth() / 8), p);
@@ -136,7 +138,9 @@ public class MyCheckersDraw extends View {
             }
         }
         p.setStyle(Paint.Style.FILL);
-        p.setTextSize(35f);
+        p1.setTextSize(50f);
+        p2.setColor(Color.TRANSPARENT);
+        canvas.drawText("Ход белых", getWidth() / 5, getHeight() / 2 + getWidth() / 2 + getHeight() / 10, p1);
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
                 if (i % 2 == j % 2 && squares[i][j].isAllow() && squares[i][j].isD()) {
@@ -552,6 +556,14 @@ public class MyCheckersDraw extends View {
                         drawSquare(canvas, squares[i][j], squares[i][j].getB());
                     }
                 }
+                if (who == 2) {
+                    canvas.drawText("Ход чёрных", getWidth() / 5, getHeight() / 2 - getWidth() / 2 - getHeight() / 10, p1);
+                    canvas.drawRect(getWidth() / 5, getHeight() / 2 + getWidth() / 2 + getHeight() / 10, getWidth() * 4 / 5, getHeight() / 2 + getWidth() / 2 + getHeight() / 10 + 70, p2);
+                } else if (who == 1) {
+                    canvas.drawText("Ход белых", getWidth() / 5, getHeight() / 2 + getWidth() / 2 + getHeight() / 10, p1);
+                    canvas.drawRect(getWidth() / 5, getHeight() / 2 - getWidth() / 2 - getHeight() / 10 - 70, getWidth() * 4 / 5, getHeight() / 2 - getWidth() / 2, p2);
+                }
+                canvas.drawText("" + who, 100, 100, p);
             }
         }
     }
