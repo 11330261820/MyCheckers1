@@ -139,7 +139,8 @@ public class MyCheckersDraw extends View {
         }
         p.setStyle(Paint.Style.FILL);
         p1.setTextSize(50f);
-        p2.setColor(Color.TRANSPARENT);
+        p2.setColor(Color.WHITE);
+        p2.setStyle(Paint.Style.FILL);
         canvas.drawText("Ход белых", getWidth() / 5, getHeight() / 2 + getWidth() / 2 + getHeight() / 10, p1);
         for (int i = 0; i < squares.length; i++) {
             for (int j = 0; j < squares[i].length; j++) {
